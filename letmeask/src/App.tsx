@@ -1,8 +1,15 @@
-
+import {Button} from './components/Button'
 function App() {
   return (
-    <h1>Hello worldd</h1>
+    <div>
+      <Button text="Button 1" />
+      <Button />
+      <Button text="Button 3" />
+      
+    </div>
+    
   );
 }
 
 export default App;
+
