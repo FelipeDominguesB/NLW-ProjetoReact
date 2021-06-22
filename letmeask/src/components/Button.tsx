@@ -1,11 +1,13 @@
-type ButtonProps = {
-    text?: string;
-}
-
-export function Button(props: ButtonProps)
+import { useState } from "react";
+export function Button()
 {
+
+    const [counter, setCounter] = useState(0);
+    function increment(){
+        setCounter(counter+1);
+    }
     return(
-        <button>{props.text || 'default'}</button>
+        <button onClick={increment}>{counter}</button>
     )
 }
 
