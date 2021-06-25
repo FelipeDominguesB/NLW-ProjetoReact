@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import '../styles/auth.scss';
@@ -10,6 +10,7 @@ import {  database, firebaseConfig } from '../services/firebase';
 export function NewRoom()
 {
     const { user } = useAuth();
+    const history = useHistory();
     const [newRoom, setNewRoom] = useState('');
     async function handleCreateRoom(event: FormEvent)
     {
@@ -28,6 +29,8 @@ export function NewRoom()
             authorId: user?.id,
 
         });
+    
+        history.push(`/rooms/${firebaseRoom.key}`);
     }
 
 
@@ -46,7 +49,7 @@ export function NewRoom()
                         <input type="text" placeholder="Digite o código da sala"
                         onChange={event => setNewRoom(event.target.value)}
                         name="" id="" value={newRoom} />
-                        <Button type="submit">Entrar na sala</Button>
+                        <Button type="submit">Criar sala</Button>
                     </form>
                     <p>Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link> </p>
                 </div>
