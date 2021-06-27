@@ -7,7 +7,7 @@ import { useParams } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
 import { database } from '../services/firebase'
 import { useEffect } from 'react';
-import { parsed } from 'yargs'
+import {Question} from '../components/Question'
 type RoomParams = {
     id: string;
 }
@@ -123,8 +123,20 @@ export function Room()
                         <Button type="submit" disabled={!user}>Enviar pergunta</Button>
                     </div>
                 </form>
+                
+                
 
-                {JSON.stringify(questions)}
+                <div className="question-list">
+                {questions.map(item => {
+                    return (
+                    <Question
+                        content={item.content} 
+                        author={item.author}
+                        key={item.id}
+                    />
+                    );
+                } )}
+                </div>
             </main>
         </div>
         
